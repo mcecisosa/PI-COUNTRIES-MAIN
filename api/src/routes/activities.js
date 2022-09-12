@@ -4,6 +4,22 @@ const { Country } = require('../db')
 
 const router = Router();
 
+router.get('/', async (req,res) => {
+
+    try{
+
+        const allActivities = await Activity.findAll({ attributes: ['name']});    
+        
+        res.status(200).send(allActivities)
+
+    }catch(error){
+        res.status(404).send('No se pueden mostrar los paises')
+    }
+
+})
+
+
+
 router.post('/', async (req,res)=>{
 
     try{
