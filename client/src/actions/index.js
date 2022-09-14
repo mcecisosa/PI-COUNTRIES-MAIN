@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, GET_ALL_ACTIVITIES } from './typeActions';
+import { GET_ALL_COUNTRIES, GET_ALL_ACTIVITIES, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION } from './typeActions';
 
 
 
@@ -25,4 +25,27 @@ export const getActivities = () => {
         });
     }
 }; 
+
+export const filterByContinent = (payload) => {
+    return {
+        type: FILTER_BY_CONTINENT,
+        payload: payload
+    }
+}
+
+export const orderByName = (payload) =>{
+    return{
+        type: ORDER_BY_NAME,
+        payload:payload
+    }
+}
+
+export const orderByPopulation = (payload) =>{
+    return{
+        type: ORDER_BY_POPULATION,
+        payload:payload
+    }
+}
+
+
 
