@@ -1,52 +1,29 @@
 import React from 'react';
-import { getCountries } from '../actions/index';
-import { getActivities } from '../actions/index';
-import { useDispatch, useSelector } from 'react-redux'; //+++
-import { useEffect } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getNameCountry } from '../actions';
 
 
 export default function SearchBar(){
 
-    const dispatch = useDispatch(); //+++
-    const allActivities = useSelector(state => state.activities)
+    const dispatch = useDispatch()
+    const [name, setName] = useState("")
 
-    useEffect(()=>{
-        dispatch(getActivities())
-    },[dispatch])
-
-    function handleClick(e){   //+++
-        e.preventDefault();
-        dispatch(getCountries())        
+    function handleInputChange(e){
+        e.preventDefault()
+        setName(e.target.value)
     }
 
-    console.log(allActivities);
+    function handleSubmit(e){
+        e.preventDefault()
+        dispatch(getNameCountry(name))
+        setName("")
+    }
+
     return(
         <div>
-            <select>
-              <option value= 'asc'>Ascendente</option>
-              <option value= 'desc'>Descendente</option>
-            </select>
-            <select>
-                <option value= 'southAmerica'>South America</option>
-                <option value= 'northAmerica'>North America</option>
-                <option value= 'europe'>Europe</option>
-                <option value= 'africa'>Africa</option>
-                <option value= 'asia'>Asia</option>
-                <option value= 'oceania'>Oceania</option>
-                <option value= 'antarctic'>Antarctic</option>
-            </select>
-            <select>
-                {
-                    allActivities && allActivities.map((act) => {
-                        return <option value= 'hola'>{act.name}</option>
-                    })
-                }
-                
-            </select>
-            <button onClick= {e => {handleClick(e)}}>Volver a cargar todos los paises</button> {/*++++*/}
+            <input type='text' placeholder='Buscar...' value={name} onChange={(e)=>handleInputChange(e)}></input>
+            <button type='submit' onClick={(e)=> handleSubmit(e)}>Buscar</button>
         </div>
     )
 }
-
-//linea 41
-//<option value= 'actividades'>Tipo Actividades HACER!</option>
