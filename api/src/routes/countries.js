@@ -16,7 +16,8 @@ router.get('/', async (req,res)=>{
         if(name){
             //traigo datos de BD filtrado por name
             const allCountries = await Country.findAll({ 
-                                            attributes: ['id', 'name','continent','image'],
+                                            attributes: ['id', 'name','continent','image', 'population'],
+                                            include: [Activity],
                                             where: {
                                                 name: {[Op.iLike]: "%" + name + "%"}
                                             }
@@ -31,9 +32,13 @@ router.get('/', async (req,res)=>{
 
         }else{
 
-            //traigo datos de BD       
-           const allCountries = await Country.findAll({ attributes: ['id', 'name','continent','image']});    
-        
+            //traigo datos de BD                //const allCountries = await Country.findAll({ attributes: ['id', 'name','continent','image','population']}); 
+             
+           const allCountries = await Country.findAll({ 
+                                             attributes: ['id', 'name','continent','image', 'population'],
+                                             include: [Activity] });
+           
+                 
             res.status(200).send(allCountries)
 
         }
@@ -43,6 +48,8 @@ router.get('/', async (req,res)=>{
         res.status(404).send('No se pueden mostrar los paises')
     }
 })
+
+
 
 router.get('/:id', async (req,res)=>{
 

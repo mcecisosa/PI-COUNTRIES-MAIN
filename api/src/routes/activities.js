@@ -13,7 +13,7 @@ router.get('/', async (req,res) => {
         res.status(200).send(allActivities)
 
     }catch(error){
-        res.status(404).send('No se pueden mostrar los paises')
+        res.status(404).send('No se pueden mostrar las actividades')
     }
 
 })
@@ -23,17 +23,21 @@ router.get('/', async (req,res) => {
 router.post('/', async (req,res)=>{
 
     try{
-        const { name, difficulty, duration, season, pais } = req.body
 
-        const newActivity = await Activity.create({name,difficulty, duration, season })
+        console.log('entra al router.post y consologue el body')
+        console.log(req.body)
+
+        const { name, difficulty, duration, season, paises } = req.body
+
+        const newActivity = await Activity.create({name, difficulty, duration, season })
 
         let countries = await Country.findAll({
-            where: { name: pais}
+            where: { name: paises}
         })
 
         newActivity.addCountry(countries) 
 
-        res.status(200).send('La actividad se ha creado exitosamente!')
+        res.status(200).json('La actividad se ha creado exitosamente!')
 
     }catch(error){
 
