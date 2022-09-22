@@ -47,6 +47,7 @@ router.post('/', async (req,res)=>{
 
     }catch(error){
 
+        console.log(error)
         res.status(404).json('La actividad no se ha podido crear')
     }
     
