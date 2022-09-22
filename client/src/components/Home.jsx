@@ -12,21 +12,30 @@ export default function Home() {
     const allCountries = useSelector(state => state.countries)
     const allActivities = useSelector(state => state.activities)
 
-    //PAGINADO
-
+   
     const [typeOrder, setTypeOrder] = useState({
         alfabeticFilter: '',                        //guarda ascendente o descendente
         attributeFilter: ''                         //guarda nombre o poblacion
     })
 
+     //PAGINADO
     const [currentPage, setCurrentPage] = useState(1)
-    const [countriesPerPage, setcountriesPerPage] = useState(10)
+    const [countriesPerPage, setcountriesPerPage] = useState(9)
     const indexOfLastCountry = currentPage * countriesPerPage
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
 
+    
+
     const paginado = (pageNumber) =>{
-        setCurrentPage(pageNumber)
+
+       setCurrentPage(pageNumber)
+         if(pageNumber === 1){
+         setcountriesPerPage(9)
+       }else{
+        setcountriesPerPage(10)
+       } 
+      
     }
 
     useEffect(()=>{
@@ -44,26 +53,25 @@ export default function Home() {
     } 
 
     function handleFilterContinent(e){
-        dispatch(filterByContinent(e.target.value))
-        setCurrentPage(1)
+        if(e.target.value !== 'Elegir Continente'){
+            dispatch(filterByContinent(e.target.value))
+            setCurrentPage(1)   
+        }     
     }
 
     function handleFilterActivity(e){
-        dispatch(filterByActivity(e.target.value))
-        setCurrentPage(1)
+        if(e.target.value !=='Elegir Actividad'){
+            dispatch(filterByActivity(e.target.value))
+            setCurrentPage(1)
+        }        
     }
 
     function handleOrderFilter(e){
-
-        console.log('target.name= ' + e.target.name)
-        console.log('target.value= ' + e.target.value)
 
         setTypeOrder({
             ...typeOrder, [e.target.name]: e.target.value
         })
     } 
-
-    console.log(typeOrder)
 
     function handleClickFiltrar(e){   
         e.preventDefault();
@@ -79,6 +87,7 @@ export default function Home() {
     return(        
             <div>
                 <select onChange = {e => handleFilterContinent(e)}>
+                    <option value="Elegir Continente">Elegir Continente</option>
                     <option value= 'South America'>South America</option>
                     <option value= 'North America'>North America</option>
                     <option value= 'Europe'>Europe</option>
@@ -88,11 +97,12 @@ export default function Home() {
                     <option value= 'Antarctica'>Antarctica</option>
                 </select>
                 <select onChange = {e => handleFilterActivity(e)}>
-                {
-                    allActivities && allActivities.map((act) => {
+                
+                    <option value="Elegir Actividad">Elegir Actividad</option>
+                    {allActivities && allActivities.map((act) => {
                         return <option value= {act.name}>{act.name}</option>
-                    })
-                }
+                    })}
+                
                 </select>
                 <select name='alfabeticFilter' onChange = {e => handleOrderFilter(e)}>
                     <option value= 'ascendente' >Ascendente</option>
@@ -114,7 +124,8 @@ export default function Home() {
                 />
 
                 <SearchBar/>
-                {                    
+                {   
+                                    
                     currentCountries && currentCountries.map((c) =>{
                         return(
                             <fragment className = 'cartas'>

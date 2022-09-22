@@ -27,7 +27,7 @@ router.get('/', async (req,res)=>{
                 res.status(201).send(allCountries)
             }  
             else{
-                res.status(404).send('No existen datos del país ingresado')
+                res.status(404).json('No existen datos del país ingresado')
             }
 
         }else{
@@ -45,7 +45,7 @@ router.get('/', async (req,res)=>{
  
     }catch(error){
 
-        res.status(404).send('No se pueden mostrar los paises')
+        res.status(404).json('No se pueden mostrar los paises')
     }
 })
 
@@ -58,6 +58,8 @@ router.get('/:id', async (req,res)=>{
     try{
 
         let detail = await Country.findByPk(id.toUpperCase(), { include: [Activity] });
+
+        console.log(detail)
 
         res.send(detail)
 
