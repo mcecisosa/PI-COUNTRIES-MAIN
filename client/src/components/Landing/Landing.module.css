@@ -1,0 +1,68 @@
+.container{
+    background-image: url('../../img/landing.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;    
+    justify-content: flex-start;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.title{
+    display: flex;
+    flex-direction:column;
+    position:relative;
+    margin-left: 40px;
+    margin-top: 130px; 
+    color:rgb(62, 63, 64);
+}
+
+.btn{  
+    align-self: flex-end; /*para alinear a la izquierda*/
+    margin-top: 30px;
+    margin-left: 95px;
+
+    width: 100%;
+    max-width: 150px;
+    height: 40px;    
+    border: 3px solid;
+    color:rgb(62, 63, 64);
+    background:none;
+    outline: none;
+    border-radius:5px;
+    cursor: pointer;
+    font-weight: bold;    
+    position: relative; 
+}
+
+.btn::before,
+.btn::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 3px;
+    background:#ffdc97;
+    transform: skewX(40deg);
+    transition: .3s linear;
+}
+
+.btn::before {
+    top: -3px;
+    left: 10%;
+}
+
+.btn::after {
+    bottom: -3px;
+    right: 10%;
+}
+
+.btn:hover::before {
+    left: 85%;
+}
+
+
+.btn:hover::after {
+    right: 85%;
+}

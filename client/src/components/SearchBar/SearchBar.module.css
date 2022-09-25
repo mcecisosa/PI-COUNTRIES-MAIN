@@ -1,0 +1,38 @@
+.container{
+    background-color:rgba(0, 0, 0, 0.121);
+    padding: 3px 3px;
+    color: #333333; 
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    border-radius: 5px;  
+}
+
+.container input{
+    padding: 5px 5px;
+    color: #333333; 
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 4px;
+    width: 220px;
+}
+
+.container button{
+    padding: 5px 5px;
+    color: #333333; 
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 80px
+}
+
+.container input:focus,
+.container input:hover,
+.container button:focus,
+.container button:hover{
+    outline: none;
+    border: 1px solid #ffffff;
+}

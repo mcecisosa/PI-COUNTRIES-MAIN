@@ -1,0 +1,23 @@
+.container{
+    /* border-color: rgb(142, 142, 143); */
+    border-color: black;
+    /* background-color: aliceblue; */
+}
+
+.container h3{
+    text-align: center;
+}
+
+.datos{
+    height: 45px;
+    width: 100%;
+    display: flex;
+    justify-content:center; 
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.datos h4{
+    margin-right: 30px;
+}
+

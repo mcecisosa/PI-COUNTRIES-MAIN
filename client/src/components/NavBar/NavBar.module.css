@@ -1,0 +1,77 @@
+.container{
+    background-image: url('../../img/landing.jpeg');
+    background-size: cover;
+    background-position:top;
+    height: 100vh;
+    background-repeat: no-repeat;
+
+    height: 45px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content:right;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.container h3{
+    margin-right: 1100px;
+    color:rgb(62, 63, 64);
+}
+
+.btnHome, .btnActividad{
+    width: 100%;
+    width: 80px;
+    height: 25px;    
+    border: 1px solid;
+    color:rgb(62, 63, 64);
+    background:none;
+    outline: none;
+    border-radius:5px;
+    cursor: pointer;
+    font-weight: bold;    
+    position: relative; 
+}
+
+.btnHome::before,
+.btnHome::after,
+.btnActividad::before,
+.btnActividad::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 1px;
+    background:#88aed0;    /* #98bfde  94bee0  91b9db*/
+    transform: skewX(40deg);
+    transition: .3s linear;
+}
+
+.btnHome::before,
+.btnActividad:before {
+    top: -1px;
+    left: 10%;
+}
+
+.btnHome::after,
+.btnActividad::after {
+    bottom: -1px;
+    right: 10%;
+}
+
+.btnHome:hover::before,
+.btnActividad:hover::before {
+    left: 75%;
+}
+
+.btnHome:hover::after,
+.btnActividad:hover:after {
+    right: 75%;
+}
+
+.btnActividad{
+    height: 25px;
+    width: 120px;
+    margin-left: 10px;   
+}

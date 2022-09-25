@@ -1,0 +1,20 @@
+.container{
+    background-image: url('../../img/landing.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.detail{
+
+}
+
+.activity{
+    text-align: center;
+    background-color: aliceblue;
+}
+
