@@ -109,14 +109,12 @@ export default function ActivityCreate(){
     },[dispatch])
 
     return(
-        <div>
-            <div class={styleNav.container}>
-                <NavBar></NavBar>
-            </div>
-            <div class={style.container}>
+        <div class={style.container}>
+            
+            <div class={style.card}>
 
                 <div class={style.title}>
-                    <h1>Crear Actividad Turística</h1>
+                    <h2>Crear Actividad Turística</h2>
                 </div>
 
                 <div class={style.form}>
@@ -124,7 +122,7 @@ export default function ActivityCreate(){
                     <form onSubmit={(e)=>handleSubmit(e)}>
 
                         <div class={style.name}>
-                            <label>Nombre:</label>
+                            <h3>Nombre:</h3>
                             <input 
                                 type='text' 
                                 value={input.name} 
@@ -137,7 +135,7 @@ export default function ActivityCreate(){
                         </div>
 
                         <div class={style.difficulty}>
-                            <label>Dificultad:</label>
+                            <h3>Dificultad:</h3>
                             <input 
                                 type='number' 
                                 value={input.difficulty} 
@@ -151,7 +149,7 @@ export default function ActivityCreate(){
                         </div>
 
                         <div class={style.duration}>
-                            <label>Duración:</label>
+                            <h3>Duración:</h3>
                             <input 
                                 type='text' 
                                 value={input.duration} 
@@ -164,7 +162,7 @@ export default function ActivityCreate(){
                         </div>
 
                         <div class={style.season}>
-                            <label>Temporada:</label>
+                            <h3>Temporada:</h3>
                             <select value={input.season} name='season' onChange={e=>handleChange(e)}>
                                 <option value="Elegir Temporada">Elegir Temporada</option>
                                 <option value='Verano'>Verano</option>
@@ -177,6 +175,7 @@ export default function ActivityCreate(){
                             {errors.season && (<p>{errors.season}</p>)}
                         </div>
                         <div class={style.countries}>
+                            <h3>Paises:</h3>
                             <select onChange={e=>handleSelect(e)}>
                                 {countries.map((c)=>{
                                     return <option value={c.name}>{c.name}</option>  //ordenar por orden alfabetico
@@ -188,21 +187,23 @@ export default function ActivityCreate(){
                         </div>
                         
                         <div class={style.btn}>
-                            <button id='btn'>Crear Actividad</button>                                          
+                            <button>Crear Actividad</button>                                          
                         </div>                        
                     </form>
                 </div>               
                 
-                <div class={style.countrySelected}>
+                
+
+            </div>
+
+            <div class={style.countrySelected}>
                     {input.paises.map((e) => (
                         <ul>
-                            <li>{e}</li>
+                            <h4>{e}</h4>  {/* li */}
                             <button onClick={()=>handleDelete(e)}>X</button>
                         </ul>                          
                         ))}               
                 </div>
-
-            </div>
             
         </div>
     )

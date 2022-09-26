@@ -16,7 +16,8 @@ function App() {
         <Route path ='/countries' component = {NavBar}/>
         <Route exact path = '/countries' component = {Home}/>
         <Route path ='/countries/:id' component = {Detail}/>
-        <Route path ='/activity' component = {ActivityCreate}/>         
+        <Route path ='/activity' component = {NavBar}/>  
+        <Route path ='/activity' component = {ActivityCreate}/>               
       </React.Fragment>      
     </BrowserRouter>    
   );

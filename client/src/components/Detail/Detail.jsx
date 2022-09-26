@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../actions/index';
 import { Link } from 'react-router-dom';
 import Activity from '../Activity/Activity'
+import CountryDetail from '../Country/CountryDetail'
 import style from './Detail.module.css'
 
 export default function Detail(props){
@@ -25,17 +26,19 @@ export default function Detail(props){
                 country ?
                 <div class={style.container}>
                     <div class={style.detail}>
-                        <h1>{country.name}</h1>
-                        <h1>{country.id}</h1>
-                        <img src= {country.image}></img>
-                        <h2>Continente: {country.continent}</h2>
-                        <h2>Subregion: {country.subregion}</h2>
-                        <h2>Capital: {country.capital}</h2>
-                        <h2>Area: {country.area} km2</h2>
-                        <h2>Población: {country.population} personas</h2>
+                        <CountryDetail
+                            image = {country.image}
+                            name = {country.name}
+                            id = {country.id}
+                            continent = {country.continent}
+                            subregion ={country.subregion}
+                            capital = {country.capital}
+                            area = {country.area}
+                            population = {country.population}
+                        /> 
                     </div>    
                     <div class={style.activity}>
-                        <h1>Actividades Turísticas:</h1>
+                        <h1>Actividades Turísticas</h1>
                         {country.activities && country.activities.map(el=>{
                             return(
                                 <div>                                
