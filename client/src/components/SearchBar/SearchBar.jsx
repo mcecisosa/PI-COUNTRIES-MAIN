@@ -16,9 +16,14 @@ export default function SearchBar(){
     }
 
     function handleSubmit(e){
-        e.preventDefault()
-        dispatch(getNameCountry(name))
-        setName("")
+        if(name){
+            e.preventDefault()
+            dispatch(getNameCountry(name))
+            setName("")
+        }else{
+            alert('Debe ingresar un nombre')
+        }
+       
     }
 
     return(

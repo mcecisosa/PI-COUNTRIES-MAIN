@@ -10,7 +10,7 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
 
     var allCountries = [];
-   
+
     switch(action.type){
 
                 
@@ -18,7 +18,7 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_ALL_ACTIVITIES: return {...state, activities: action.payload}
 
-        case GET_NAME_COUNTRY: return {...state, countries: action.payload}
+        case GET_NAME_COUNTRY: return {...state, countries: action.payload}       
 
         case GET_DETAIL: return {...state, detail: action.payload}
 

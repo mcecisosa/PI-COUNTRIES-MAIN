@@ -75,14 +75,20 @@ export default function Home() {
     } 
 
     function handleClickFiltrar(e){   
-        e.preventDefault();
-        dispatch(orderBy(typeOrder))
-        setCurrentPage(1)
-        setTypeOrder({
-            alfabeticFilter: typeOrder.alfabeticFilter,                        
-            attributeFilter: typeOrder.attributeFilter                       
-        })       
+        
+        if((typeOrder.alfabeticFilter ==='ascendente'||typeOrder.alfabeticFilter==='descendente')&&(typeOrder.attributeFilter==='nombre'||typeOrder.attributeFilter==='poblacion')){
+            e.preventDefault();
+            dispatch(orderBy(typeOrder))
+            setCurrentPage(1)
+            setTypeOrder({
+                alfabeticFilter: typeOrder.alfabeticFilter,                        
+                attributeFilter: typeOrder.attributeFilter                       
+            })
+        }else{
+            alert('Debe seleccionar orden y tipo de filtro')
+        }               
     } 
+
 
     
     return(        
@@ -170,4 +176,3 @@ export default function Home() {
             </div>  
     )
 }
-

@@ -5,7 +5,7 @@
     height: 100vh;
     background-repeat: no-repeat;
 
-    height: 45px;
+    height: 65px;
     width: 100%;
     top: 0;
     left: 0;
@@ -17,15 +17,16 @@
 }
 
 .container h3{
-    margin-right: 1100px;
+    margin-right: 1080px;
     color:rgb(62, 63, 64);
 }
 
-.btnHome, .btnActividad{
+.btnHome,
+.btnActividad{
     width: 100%;
-    width: 80px;
-    height: 25px;    
-    border: 1px solid;
+    width: 100px;
+    height: 35px;    
+    border: 1.2px solid;
     color:rgb(62, 63, 64);
     background:none;
     outline: none;
@@ -42,8 +43,8 @@
     content: '';
     position: absolute;
     width: 8px;
-    height: 1px;
-    background:#88aed0;    /* #98bfde  94bee0  91b9db*/
+    height: 1.2px;
+    background:#88aed0;    
     transform: skewX(40deg);
     transition: .3s linear;
 }
@@ -71,7 +72,7 @@
 }
 
 .btnActividad{
-    height: 25px;
+    height: 35px;
     width: 120px;
     margin-left: 10px;   
 }

@@ -6,7 +6,7 @@ export default function CountryDetail({image, name, id, continent, subregion, ca
                 <img src={image}/>
                 <h1>{name}</h1>
                 <h2>{continent}</h2>
-                <h2>{id}</h2>                                                          
+                <h3>{id}</h3>                                                          
                 <h3>Subregion: {subregion}</h3>
                 <h3>Capital: {capital}</h3>
                 <h3>Area: {area} km2</h3>
@@ -14,3 +14,8 @@ export default function CountryDetail({image, name, id, continent, subregion, ca
         </div>
     );
 }
+
+
+
+
+{/* <h3>Población: {population && (population/1000).toFixex(2)} Millones de personas</h3> */}

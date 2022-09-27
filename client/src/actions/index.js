@@ -53,12 +53,19 @@ export const postActivity = (payload) => {
 export const getNameCountry = (payload) => {
     return async function (dispatch){
 
-        return fetch(`http://localhost:3001/countries?name=${payload}`)
-        .then(response => response.json())
-         .then(json => {
-          dispatch({ type: GET_NAME_COUNTRY, payload: json }); 
-                  
-        });
+        try{
+            return fetch(`http://localhost:3001/countries?name=${payload}`)
+            .then(response => response.json())
+            .then(json => {
+            dispatch({ type: GET_NAME_COUNTRY, payload: json }); 
+                    
+            });
+
+        }catch(error){
+            console.log('error del getNameCountry' + error)
+        }
+
+        
     }
 }; 
 

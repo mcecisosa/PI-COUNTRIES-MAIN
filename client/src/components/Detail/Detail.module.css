@@ -15,7 +15,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    margin: 20px;
+   /*  margin: 15px; */
     text-align: center;
     transition: all 0.25s;
     background-color: aliceblue;
@@ -29,6 +29,11 @@
     height: 320px; 
 }
 
+.activity img{
+    width: 150px;  
+    height: 100px;
+}
+
 .activity{
     text-align: center;
     background-color: aliceblue;
@@ -38,7 +43,9 @@
     border-radius: 8px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    margin: 20px;
+    /* margin: 15px; */
+    margin-left: 5px;
+    margin-right: 5px;
     text-align: center;
     transition: all 0.25s;
     background-color: aliceblue;

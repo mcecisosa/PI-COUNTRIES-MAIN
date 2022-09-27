@@ -38,10 +38,11 @@ export default function Detail(props){
                         /> 
                     </div>    
                     <div class={style.activity}>
+                        <img src={country.image}/>
                         <h1>Actividades Turísticas</h1>
-                        {country.activities && country.activities.map(el=>{
+                        {country.activities && country.activities.length>0 ?country.activities.map(el=>{
                             return(
-                                <div>                                
+                                <div>                                                                                               
                                     <Activity
                                         name = {el.name}
                                         difficulty = {el.difficulty}
@@ -52,11 +53,12 @@ export default function Detail(props){
                                 
                             )
                         }      
-                        )}
+                        ): <h4>No hay actividades registradas</h4>}                        
                     </div>    
                 </div> : <p>Loading...</p>   
             }            
         </div>
     )
 }
+
 
