@@ -39,9 +39,17 @@ export default function Home() {
       
     }
 
-    useEffect(()=>{
+   useEffect(()=>{
         dispatch(getCountries())
-    },[dispatch])
+    },[dispatch]) 
+
+   /*  useEffect(()=>{
+        if(allCountries.length === 0){
+            dispatch(getCountries())
+        }
+        
+    },[dispatch]) */
+    
 
     useEffect(()=>{
         dispatch(getActivities())
@@ -62,6 +70,8 @@ export default function Home() {
 
     function handleFilterActivity(e){
         if(e.target.value !=='Elegir Actividad'){
+            console.log('e.target.value:')
+            console.log(e.target.value)
             dispatch(filterByActivity(e.target.value))
             setCurrentPage(1)
         }        
@@ -156,7 +166,11 @@ export default function Home() {
                 </div>                 
 
                 <div class={style.cards}> 
-                    {currentCountries && currentCountries.map((c) =>{
+                {/* {console.log('allCountries')}
+                {console.log(allCountries)}
+                {console.log('currentCountries')}
+                {console.log(currentCountries)} */}
+                    {allCountries !=='No existen datos del país ingresado' && currentCountries && currentCountries.map((c) =>{
                         return(
                         <fragment>
                                 <Link to = {`/countries/${c.id}`} style={{textDecoration:'none',color:'#f3f3f3'}}>

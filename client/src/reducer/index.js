@@ -36,6 +36,9 @@ const rootReducer = (state = initialState, action) => {
                 
                 allCountries = state.allCountries;
 
+                console.log('reducer filterAct allC')
+                console.log(allCountries)
+
                  allCountries.forEach(el => {
                     el.activities.forEach((act) => {
                         if (act.name === action.payload){
@@ -51,7 +54,11 @@ const rootReducer = (state = initialState, action) => {
                         }
                     }
                 } */                          
- 
+                console.log('reducer filterAct')
+                console.log(filt)
+
+                
+
                 return {...state, countries: filt}
 
         case ORDER_BY:
