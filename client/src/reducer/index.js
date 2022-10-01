@@ -1,4 +1,12 @@
-import { GET_ALL_COUNTRIES, GET_ALL_ACTIVITIES, GET_NAME_COUNTRY, GET_DETAIL, FILTER_BY_CONTINENT, ORDER_BY, FILTER_BY_ACTIVITY, POST_ACTIVITY } from "../actions/typeActions";
+import { GET_ALL_COUNTRIES, 
+         GET_ALL_ACTIVITIES, 
+         GET_NAME_COUNTRY, 
+         GET_DETAIL, 
+         FILTER_BY_CONTINENT, 
+         ORDER_BY, 
+         FILTER_BY_ACTIVITY, 
+         POST_ACTIVITY, 
+         DELETE_ACTIVITY } from "../actions/typeActions";
 
 const initialState = {
     countries: [],
@@ -36,10 +44,7 @@ const rootReducer = (state = initialState, action) => {
                 
                 allCountries = state.allCountries;
 
-                console.log('reducer filterAct allC')
-                console.log(allCountries)
-
-                 allCountries.forEach(el => {
+                allCountries.forEach(el => {
                     el.activities.forEach((act) => {
                         if (act.name === action.payload){
                             filt.push(el)
@@ -62,35 +67,31 @@ const rootReducer = (state = initialState, action) => {
                 return {...state, countries: filt}
 
         case ORDER_BY:
-
-            //{alfabeticFilter: '', attributeFilter: ''}  //ascendente o descendente, nombre o poblacion
-            console.log('action.payload= ')
-            console.log(action.payload)
-
+            var countrySorted=[]
+            //{alfabeticFilter: '', attributeFilter: ''}  //ascendente o descendente, nombre o poblacion   
 
                 if(action.payload.alfabeticFilter === 'ascendente' && action.payload.attributeFilter === 'nombre' ){
-                    var countrySorted = state.countries.sort(function(a,b){
+                    countrySorted = state.countries.sort(function(a,b){
                         if(a.name > b.name)  return 1;
                         if(b.name > a.name)  return -1;
                         return 0;
                 })
                 }else if(action.payload.alfabeticFilter === 'descendente' && action.payload.attributeFilter === 'nombre' ){
                     console.log('entra al if')
-                    var countrySorted = state.countries.sort(function(a,b){
+                    countrySorted = state.countries.sort(function(a,b){
                         if(a.name > b.name)  return -1;
                         if(b.name > a.name)  return 1;
                         return 0;
                     })
                 }else if(action.payload.alfabeticFilter === 'ascendente' && action.payload.attributeFilter === 'poblacion' ){
-                    var countrySorted = state.countries.sort(function(a,b){
+                    countrySorted = state.countries.sort(function(a,b){
                         if(a.population > b.population)  return 1;
                         if(b.population > a.population)  return -1;
                         return 0;
                 })
-                console.log('countrySorted=== ')
-                console.log(countrySorted)
+                
             }else if(action.payload.alfabeticFilter === 'descendente' && action.payload.attributeFilter === 'poblacion' ){
-                var countrySorted = state.countries.sort(function(a,b){
+                countrySorted = state.countries.sort(function(a,b){
                     if(a.population > b.population)  return -1;
                     if(b.population > a.population)  return 1;
                     return 0;
@@ -98,6 +99,15 @@ const rootReducer = (state = initialState, action) => {
             }  
             console.log(countrySorted)          
             return {...state, countries: countrySorted}
+
+            case DELETE_ACTIVITY:
+                console.log('action.payload del reducer')
+                console.log(action.payload)
+                return {
+                    ...state,                                                      
+                       activities: state.activities.filter(a => a.id !== action.payload)                      
+                };
+
      
 
         default: return {...state}

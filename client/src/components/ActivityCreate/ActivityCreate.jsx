@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getCountries, postActivity } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
-import NavBar from '../NavBar/NavBar'
 import style from './ActivityCreate.module.css'
-import styleNav from '../NavBar/NavBar.module.css'
+
 
 function validate(input){
     let errors = {};
@@ -177,6 +176,7 @@ export default function ActivityCreate(){
                         <div class={style.countries}>
                             <h3>Paises:</h3>
                             <select onChange={e=>handleSelect(e)}>
+                                <option disabled selected>Elegir País</option>
                                 {countries.map((c)=>{
                                     return <option value={c.name}>{c.name}</option>  //ordenar por orden alfabetico
                                 })}
@@ -210,4 +210,3 @@ export default function ActivityCreate(){
 }
 
 
-//

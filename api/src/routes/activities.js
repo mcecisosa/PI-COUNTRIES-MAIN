@@ -8,7 +8,7 @@ router.get('/', async (req,res) => {
 
     try{
 
-        const allActivities = await Activity.findAll({ attributes: ['name']});    
+        const allActivities = await Activity.findAll({ attributes: ['name', 'id']});    
         
         res.status(200).send(allActivities)
 
@@ -17,7 +17,6 @@ router.get('/', async (req,res) => {
     }
 
 })
-
 
 
 router.post('/', async (req,res)=>{
@@ -51,6 +50,27 @@ router.post('/', async (req,res)=>{
         res.status(404).json('La actividad no se ha podido crear')
     }
     
+})
+
+router.delete('/:id', async (req,res)=>{
+
+    const { id } = req.params
+    
+    try{
+
+        let filaBorrada = await Activity.destroy({
+            where:{id: id},
+            truncate: {cascade: true}
+        });
+        if(filaBorrada === 1){
+            res.status(200).json('La actividad fue eliminada')  
+        }                    
+
+    }catch(error){
+        
+        res.status(404).json("La actividad no se pudo eliminar")
+
+    }     
 })
 
 

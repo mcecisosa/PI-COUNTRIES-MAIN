@@ -12,7 +12,7 @@ export default function Paginado ({countriesPerPage, allCountries, paginado}){
         <nav class={style.container}>
             <ul class={style.paginacion}>
                 {pageNumbers && pageNumbers.map((number)=>{                                         
-                      return <li><a onClick={()=>paginado(number)}>{number}</a></li>})
+                      return <li key={number}><a onClick={()=>paginado(number) }>{number}</a></li>})
                 }
             </ul>
         </nav>

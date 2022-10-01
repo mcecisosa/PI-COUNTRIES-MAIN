@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Activity.module.css'
-import img from '../../img/actividad.jpg'
+
 
 
 

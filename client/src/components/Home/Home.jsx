@@ -43,13 +43,7 @@ export default function Home() {
         dispatch(getCountries())
     },[dispatch]) 
 
-   /*  useEffect(()=>{
-        if(allCountries.length === 0){
-            dispatch(getCountries())
-        }
-        
-    },[dispatch]) */
-    
+   
 
     useEffect(()=>{
         dispatch(getActivities())
@@ -172,7 +166,7 @@ export default function Home() {
                 {console.log(currentCountries)} */}
                     {allCountries !=='No existen datos del país ingresado' && currentCountries && currentCountries.map((c) =>{
                         return(
-                        <fragment>
+                        <div>
                                 <Link to = {`/countries/${c.id}`} style={{textDecoration:'none',color:'#f3f3f3'}}>
                                     <Country
                                         name = {c.name}
@@ -181,7 +175,7 @@ export default function Home() {
                                         key = {c.id}
                                     />                                
                                 </Link>                                
-                            </fragment>
+                        </div>
                             );                        
                         })
                     }

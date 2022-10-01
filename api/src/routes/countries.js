@@ -36,7 +36,8 @@ router.get('/', async (req,res)=>{
              
            const allCountries = await Country.findAll({ 
                                              attributes: ['id', 'name','continent','image', 'population'],
-                                             include: [Activity] });
+                                             include: [Activity],
+                                            order:[['name', 'ASC']] });
            
                  
             res.status(200).send(allCountries)
@@ -45,8 +46,8 @@ router.get('/', async (req,res)=>{
  
     }catch(error){
         
-        /* console.log(error)
-        res.status(404).json('No se pueden mostrar los paises') */
+        console.log(error)
+        res.status(404).json('No se pueden mostrar los paises')
     }
 })
 

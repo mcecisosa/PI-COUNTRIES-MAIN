@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetail } from '../../actions/index';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { getDetail, deleteActivity } from '../../actions/index';
 import Activity from '../Activity/Activity'
 import CountryDetail from '../Country/CountryDetail'
 import style from './Detail.module.css'
@@ -10,15 +10,21 @@ import style from './Detail.module.css'
 export default function Detail(props){
     
     const dispatch = useDispatch();
+    const history = useHistory()
 
-    console.log(props.match.params)
-
+   
     useEffect(()=>{
         dispatch(getDetail(props.match.params.id))
-    },[dispatch])
+    },[props.match.params.id, dispatch])
 
     const country = useSelector((state)=> state.detail)
 
+
+    function handleClick(id){
+            dispatch(deleteActivity(id))   
+            alert('La actividad fue eliminada')
+            history.push('/countries')      
+    }
        
     return(
         <div>
@@ -38,19 +44,21 @@ export default function Detail(props){
                         /> 
                     </div>    
                     <div class={style.activity}>
-                        <img src={country.image}/>
+                        <img src={country.image} alt ='imagen'/>
                         <h1>Actividades Turísticas</h1>
                         {country.activities && country.activities.length>0 ?country.activities.map(el=>{
                             return(
-                                <div>                                                                                               
+                                <div class={style.detailAct}>                                                                                               
                                     <Activity
+                                        id = {el.id}
                                         name = {el.name}
                                         difficulty = {el.difficulty}
                                         duration = {el.duration}
                                         season = {el.season}
+                                        key = {el.id}
                                     />
-                                </div>    
-                                
+                                    <button onClick={()=>handleClick(el.id)}>Eliminar Actividad</button>
+                                </div>   
                             )
                         }      
                         ): <h4>No hay actividades registradas</h4>}                        
@@ -61,4 +69,17 @@ export default function Detail(props){
     )
 }
 
+/* {this.props.movies.map(m => 
+    <li>
+      {m.title} 
+      <button onClick={() => this.props.removeMovieFavorite({id: m.id})}>X</button>
+    </li>)}
+</ul> */
 
+
+/* {input.paises.map((e) => (
+    <ul>
+        <h4>{e}</h4>  
+        <button onClick={()=>handleDelete(e)}>X</button>
+    </ul>                          
+    ))}    */

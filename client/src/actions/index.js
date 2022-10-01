@@ -1,6 +1,16 @@
-import { GET_ALL_COUNTRIES, GET_ALL_ACTIVITIES, POST_ACTIVITY, GET_NAME_COUNTRY, GET_DETAIL, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITY, ORDER_BY } from './typeActions';
+import { GET_ALL_COUNTRIES, 
+         GET_ALL_ACTIVITIES, 
+         POST_ACTIVITY, 
+         GET_NAME_COUNTRY, 
+         GET_DETAIL, 
+         FILTER_BY_CONTINENT, 
+         FILTER_BY_ACTIVITY, 
+         ORDER_BY, 
+         DELETE_ACTIVITY } from './typeActions';
+
 
 import axios from 'axios';
+
 
 export const getCountries = () => {
     return async function (dispatch){
@@ -57,9 +67,7 @@ export const getNameCountry = (name) => {
             
 
         }catch(error){
-            console.log('entra al catch del action')
-            console.log(error.response.data)
-            alert(error.response.data)
+                alert(error.response.data)
         }        
     }
 };
@@ -77,11 +85,10 @@ export const getDetail = (id) => {
 
         }catch(error){
             console.log(error)
+            alert('no matches')
         }       
     }
 }; 
-
-
 
 export const filterByContinent = (payload) => {
     return {
@@ -92,8 +99,6 @@ export const filterByContinent = (payload) => {
 
 export const filterByActivity = (payload) => {
 
-    console.log('entra al action del filterByAct')
-    console.log(payload)
     return {
         type: FILTER_BY_ACTIVITY,
         payload: payload
@@ -105,6 +110,24 @@ export const orderBy = (payload) =>{
         type: ORDER_BY,
         payload:payload
     }
+}
+
+export const deleteActivity = (id) => {
+    return async function (dispatch){
+
+        try{
+
+            var json = await axios.delete(`http://localhost:3001/activities/${id}`)     
+            console.log('json q recibe de la ruta (en el action):')
+            console.log(json)       
+            return dispatch({ type: DELETE_ACTIVITY, payload: id })
+    
+        }catch(error){
+            console.log(error.response.data)
+        }
+
+    }
+   
 }
 
 

@@ -50,7 +50,51 @@
     transition: all 0.25s;
     background-color: aliceblue;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:black
+    color:black;
+   
+}
+
+.activity button{
+    width: 100%;
+    max-width: 150px;
+    height: 25px;
+    border: 1px solid;
+    color: rgb(62, 63, 64);
+    background: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+}
+
+.activity button::before,
+.activity button::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 3px;
+    background: white;
+    transform: skewX(40deg);
+    transition: .3s linear;
+}
+
+.activity button::before {
+    top: -3px;
+    left: 10%;
+}
+
+.activity button::after {
+    bottom: -3px;
+    right: 10%;
+}
+
+.activity button:hover::before {
+    left: 85%;
 }
 
 
+.activity button:hover::after {
+    right: 85%;
+}

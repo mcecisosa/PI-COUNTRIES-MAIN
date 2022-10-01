@@ -6,4 +6,5 @@ export const GET_DETAIL = "GET_DETAIL";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
 export const ORDER_BY = "ORDER_BY";
+export const DELETE_ACTIVITY = "DELETE_ACTIVITY"
 

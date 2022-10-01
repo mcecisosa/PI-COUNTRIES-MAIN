@@ -3,7 +3,7 @@ import React from 'react';
 export default function CountryDetail({image, name, id, continent, subregion, capital, area, population}){
     return(
         <div >
-                <img src={image}/>
+                <img src={image} alt={image}/>
                 <h1>{name}</h1>
                 <h2>{continent}</h2>
                 <h3>{id}</h3>                                                          
