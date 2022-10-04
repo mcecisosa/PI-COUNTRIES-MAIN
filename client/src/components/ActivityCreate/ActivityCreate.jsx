@@ -107,7 +107,7 @@ export default function ActivityCreate(){
         }))      
 
     }
-
+    /* console.log('hola') */
     useEffect(()=>{
         dispatch(getCountries())
     },[dispatch])
