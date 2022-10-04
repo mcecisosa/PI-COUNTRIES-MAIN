@@ -18,3 +18,4 @@ export default function Paginado ({countriesPerPage, allCountries, paginado}){
         </nav>
     )
 }
+

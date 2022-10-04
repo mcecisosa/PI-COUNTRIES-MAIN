@@ -50,7 +50,7 @@ export default function Home() {
     },[dispatch])
 
     
-     function handleClick(e){   
+     function handleClickLimpiar(e){   
         e.preventDefault();
         dispatch(getCountries())
     } 
@@ -141,7 +141,7 @@ export default function Home() {
                     </div>      
 
                     <div class={style.btnReset}> 
-                        <button onClick= {e => {handleClick(e)}}>Limpiar filtros</button> 
+                        <button onClick= {e => {handleClickLimpiar(e)}}>Limpiar filtros</button> 
                     </div>
 
                     <div class={style.searchBar}>

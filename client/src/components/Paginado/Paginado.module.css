@@ -7,7 +7,6 @@
     display: inline-block;
     padding: 0;
     margin: 0;
-    /* background-color:rgb(194, 189, 189); */
     background-color:rgba(0, 0, 0, 0.121);
 }
 
@@ -21,10 +20,10 @@
     padding: 8px 10px;  
     text-decoration:none;  
     transition: background-color .3s;   
-    border: 1px solid #ddd; /* Gray */
+    border: 1px solid #ddd;
 }
 
-.paginacion li a.active{
+.paginacion li a .active{
     background-color:fuchsia;
     color:white
 }

@@ -39,9 +39,13 @@ router.get('/', async (req,res)=>{
                                              include: [Activity],
                                             order:[['name', 'ASC']] });
            
-                 
-            res.status(200).send(allCountries)
-
+            
+            if(allCountries.length>0){
+                res.status(201).send(allCountries)
+            }  
+            else{
+                res.status(404).json('No existen paises')
+            }  
         }
  
     }catch(error){
@@ -61,8 +65,7 @@ router.get('/:id', async (req,res)=>{
 
         let detail = await Country.findByPk(id.toUpperCase(), { include: [Activity] });
 
-        console.log(detail)
-
+      
         res.send(detail)
 
     }catch(error){

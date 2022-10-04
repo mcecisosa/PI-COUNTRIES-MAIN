@@ -8,9 +8,16 @@ router.get('/', async (req,res) => {
 
     try{
 
-        const allActivities = await Activity.findAll({ attributes: ['name', 'id']});    
+        const allActivities = await Activity.findAll({ attributes: ['name', 'id']});   
         
-        res.status(200).send(allActivities)
+        if(allActivities.length>0){
+            res.status(200).send(allActivities)
+        }  
+        else{
+            res.status(404).json('No existen actividades')
+        }  
+        
+        
 
     }catch(error){
         res.status(404).json('No se pueden mostrar las actividades')
@@ -71,6 +78,42 @@ router.delete('/:id', async (req,res)=>{
         res.status(404).json("La actividad no se pudo eliminar")
 
     }     
+})
+
+router.put('/update/:id', async (req,res)=>{
+
+    let {id} = req.params
+
+    try{
+
+        const { name, difficulty, duration, season, paises } = req.body
+
+        
+        if(!name || name ==='' || !difficulty && isNaN(difficulty) == true || !duration && isNaN(duration) == true || (season!=='Verano' && season!=='Otoño' && season!=='Invierno' && season!=='Primavera') || paises.length===0){
+
+            
+            res.status(404).json('Los datos ingresados son incorrectos, la actividad no se ha modificado')
+
+        }else{
+           
+          
+           const updateAct = await Activity.update({name, difficulty, duration, season}, 
+            {
+            where: {
+                id: id,
+            }
+        });
+
+           console.log(updateAct)
+           res.status(200).json('La actividad se ha modificado exitosamente!') 
+        }        
+
+    }catch(error){
+
+        console.log(error)
+        res.status(404).json('La actividad no se ha podido crear')
+    }
+    
 })
 
 

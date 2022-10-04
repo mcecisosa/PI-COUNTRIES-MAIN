@@ -70,7 +70,8 @@ export const getNameCountry = (name) => {
                 alert(error.response.data)
         }        
     }
-};
+}; 
+
 
 export const getDetail = (id) => {
     return async function (dispatch){
@@ -79,8 +80,7 @@ export const getDetail = (id) => {
              return fetch(`http://localhost:3001/countries/${id}`)
             .then(response => response.json())
              .then(json => {
-              dispatch({ type: GET_DETAIL, payload: json }); 
-                      
+              dispatch({ type: GET_DETAIL, payload: json });                       
             });
 
         }catch(error){
@@ -147,11 +147,23 @@ export const deleteActivity = (id) => {
         }catch(error){
             console.log(error)
             alert('no matches')
-        }
-
-        
+        }        
     }
 };  */
+
+//OPCION CON AXIOS-PROMESAS
+/* export const getNameCountry = (name) => {
+    return async function(dispatch){
+        try{
+            return axios(`http://localhost:3001/countries?name=${name}`)
+            
+            .then(response => dispatch({type:GET_NAME_COUNTRY, payload: response.data}))
+
+        }catch(error){
+            console.log(error)
+        }
+    }
+} */
 
 
 //OPCION POST CON FETCH PROMESAS
