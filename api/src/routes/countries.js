@@ -69,7 +69,8 @@ router.get('/:id', async (req,res)=>{
         res.send(detail)
 
     }catch(error){
-
+        console.log(error)
+        res.status(404).json('No existen datos del pais seleccionado')
     }    
 })
 

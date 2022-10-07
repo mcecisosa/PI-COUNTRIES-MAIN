@@ -9,9 +9,9 @@ function validate(input){
     let errors = {};
     if(!input.name){
         errors.name = 'Debe ingresar un nombre'
-    }/* if(!/[A-Za-z0-9]/.test(input.name)){
+    }if(!/[A-Za-z0-9]/.test(input.name)){
         errors.name = 'El nombre admite solo letras, numeros y espacios'     
-    } */if(!input.difficulty){
+    }if(!input.difficulty){
         errors.difficulty = 'Debe ingresar un valor entre 1 y 5'
     }if(input.difficulty<1 || input.difficulty>5){
             errors.difficulty = 'Debe ingresar un valor entre 1 y 5'
@@ -32,7 +32,10 @@ export default function ActivityCreate(){
 
     const dispatch = useDispatch()
     const history = useHistory()
+
     const countries = useSelector((state)=> state.countries)
+    const alertas = useSelector((state)=> state.alertas)
+
     const [errors, setErrors] = useState({})
 
     const [input,setInput] = useState({
@@ -42,6 +45,10 @@ export default function ActivityCreate(){
         season:"",
         paises: []
     })
+
+    useEffect(()=>{
+        dispatch(getCountries())
+    },[dispatch])
 
     function handleChange(e){
 
@@ -60,15 +67,18 @@ export default function ActivityCreate(){
     }
 
     function handleSelect(e){
-        setInput({
-            ...input,
-            paises: [...input.paises, e.target.value]
-        })
+        if(e.target.value!=='Elegir País'){
 
-        setErrors(validate({
-            ...input,
-            paises: [...input.paises, e.target.value]
-        }))             
+            setInput({
+                ...input,
+                paises: [...input.paises, e.target.value]
+            })
+    
+            setErrors(validate({
+                ...input,
+                paises: [...input.paises, e.target.value]
+            }))  
+          }               
     }
 
     
@@ -76,10 +86,15 @@ export default function ActivityCreate(){
     function handleSubmit(e){
         e.preventDefault()
 
-        if(JSON.stringify(errors) === '{}'){
+        if(JSON.stringify(errors) !== '{}' || (input.name==='' && input.difficulty==='' & input.duration===''&& input.season==='' && input.paises.length<1)){
+            alert('Verifique los datos ingresados')
+        
+        }else if(JSON.stringify(errors) === '{}'){
 
             dispatch(postActivity(input))
-            alert('actividad creada')
+
+            console.log(alertas)
+                        
             setInput({
                 name:"",
                 difficulty:"",
@@ -87,11 +102,12 @@ export default function ActivityCreate(){
                 season:"",
                 paises: []
             })
-            history.push('/countries')
-        } 
-        else{
-            alert('Verifique los datos ingresados')
-        }      
+
+            setTimeout(() => {
+                history.push('/countries')
+            }, 1000);                       
+           
+        }             
     }
 
     function handleDelete(e){
@@ -107,10 +123,7 @@ export default function ActivityCreate(){
         }))      
 
     }
-    /* console.log('hola') */
-    useEffect(()=>{
-        dispatch(getCountries())
-    },[dispatch])
+    
 
     return(
         <div class={style.container}>
@@ -181,7 +194,7 @@ export default function ActivityCreate(){
                         <div class={style.countries}>
                             <h3>Paises:</h3>
                             <select onChange={e=>handleSelect(e)}>
-                                <option disabled selected>Elegir País</option>
+                            <option value="Elegir País">Elegir País</option>{/* <option disabled selected>Elegir País</option> */}
                                 {countries.map((c)=>{
                                     return <option value={c.name}>{c.name}</option>  //ordenar por orden alfabetico
                                 })}

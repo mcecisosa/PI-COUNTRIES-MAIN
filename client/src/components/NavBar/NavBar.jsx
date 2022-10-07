@@ -8,9 +8,7 @@ export default function NavBar(){
         <div class={style.container}>
             <h3>Explore the World!</h3>
             <Link to= '/countries'><button class={style.btnHome}>Home</button></Link>
-            <Link to= '/activity'><button class={style.btnActividad
-            
-            }>Nueva Actividad</button></Link>
+            <Link to= '/activity'><button class={style.btnActividad}>Nueva Actividad</button></Link>
         </div>
     )
 }

@@ -47,9 +47,11 @@ export const postActivity = (payload) => {
           
           var json = await axios.post("http://localhost:3001/activities",payload)
           
+          alert(json.data)
           return dispatch({ type: POST_ACTIVITY, payload: json.data });          
 
         }catch(error){
+            console.log(error.response.data)
             console.log(error.response.data)
         }        
     }           
@@ -189,3 +191,29 @@ export const deleteActivity = (id) => {
         }        
     }           
 };  */
+
+//OPCION POST CON FETCH PROMESAS y MSJ DE ALERTA
+
+/* export const postActivity = (payload) => {
+
+    return async function (dispatch){
+
+        try{
+
+          return fetch("http://localhost:3001/activities",{
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers:{'Content-type': 'application/json; charset=utf-8'}
+          })
+          .then(response => response.json())
+          .then(json => {alert(json); return json})  //retorna json para q mande la respuesta al dispatch y actualize estado alertas
+          .then(json => {
+             dispatch({ type: POST_ACTIVITY, payload: json }); 
+          })
+          
+
+        }catch(error){
+            
+        }        
+    }           
+};   */

@@ -5,7 +5,7 @@ import { getNameCountry } from '../../actions/index';
 import style from './SearchBar.module.css'
 
 
-export default function SearchBar(){
+export default function SearchBar({paginado}){
 
     const dispatch = useDispatch()
     const [name, setName] = useState("")
@@ -20,6 +20,7 @@ export default function SearchBar(){
             e.preventDefault()
             dispatch(getNameCountry(name))
             setName("")
+            paginado(1) //para que muestre el resultado en pagina 1
         }else{
             alert('Debe ingresar un nombre')
         }

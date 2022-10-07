@@ -13,10 +13,9 @@ function App() {
     <BrowserRouter>
       <React.Fragment>
         <Route exact path ='/' component = {Landing}/>
-        <Route path ='/countries' component = {NavBar}/>
+        <Route path ='/' component = {NavBar}/>
         <Route exact path = '/countries' component = {Home}/>
-        <Route path ='/countries/:id' component = {Detail}/>
-        <Route path ='/activity' component = {NavBar}/>  
+        <Route path ='/countries/:id' component = {Detail}/>         
         <Route path ='/activity' component = {ActivityCreate}/>               
       </React.Fragment>      
     </BrowserRouter>    

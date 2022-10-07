@@ -53,6 +53,7 @@ export default function Home() {
      function handleClickLimpiar(e){   
         e.preventDefault();
         dispatch(getCountries())
+        setCurrentPage(1)
     } 
 
     function handleFilterContinent(e){
@@ -64,8 +65,6 @@ export default function Home() {
 
     function handleFilterActivity(e){
         if(e.target.value !=='Elegir Actividad'){
-            console.log('e.target.value:')
-            console.log(e.target.value)
             dispatch(filterByActivity(e.target.value))
             setCurrentPage(1)
         }        
@@ -145,7 +144,7 @@ export default function Home() {
                     </div>
 
                     <div class={style.searchBar}>
-                        <SearchBar/>
+                        <SearchBar paginado = {paginado}/>
                     </div> 
 
                 </div>

@@ -12,7 +12,8 @@ const initialState = {
     countries: [],
     activities: [],
     detail: [],
-    allCountries: []
+    allCountries: [],
+    alertas: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -31,6 +32,8 @@ const rootReducer = (state = initialState, action) => {
         case GET_DETAIL: return {...state, detail: action.payload}
 
         case POST_ACTIVITY: return {...state}
+
+        /* case POST_ACTIVITY: console.log('recibe json del action post'); console.log(action.payload); return {...state, alertas: action.payload} */
 
         case FILTER_BY_CONTINENT: 
 
