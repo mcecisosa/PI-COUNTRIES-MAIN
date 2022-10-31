@@ -2,6 +2,7 @@ const { default: axios } = require('axios');
 const { Router } = require('express');
 const { Country, Activity} = require('../db')
 const { Op } = require('sequelize');
+/* const { UPSERT } = require('sequelize/types/query-types'); */
 
 
 
@@ -78,3 +79,5 @@ router.get('/:id', async (req,res)=>{
 
 
 module.exports = router;
+
+

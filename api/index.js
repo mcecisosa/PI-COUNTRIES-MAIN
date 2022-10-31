@@ -19,6 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const  port  = process.env.PORT || 3001
 
 const { default: axios } = require('axios');
 const { Country } = require('./src/db')
@@ -59,7 +60,7 @@ async function countriesLoaded(){
 // Syncing all the models at once.
 conn.sync({ force: false }).then( async function () {
   await countriesLoaded();   //busca datos de la api y carga a BD
-  server.listen(3001, () => {
+  server.listen(port, () => {   //3001
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
