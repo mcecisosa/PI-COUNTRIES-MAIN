@@ -192,7 +192,27 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 
 ## Screens
 
-<p align="left">
+<p align="center">
   <p>Landing Page</p>
-  <img height="200" src="./client/src/screens/landingPage.jpg" />
+  <img src="./client/src/screens/landingPage.jpg"/>
+</p>
+
+<p align="center">
+  <p>Home Page</p>
+  <img src="./client/src/screens/home.jpg"/>
+</p>
+
+<p align="center">
+  <p>Filtrado de paises</p>
+  <img src="./client/src/screens/filtrado.jpg"/>
+</p>
+
+<p align="center">
+  <p>Crear nueva actividad turística</p>
+  <img src="./client/src/screens/nuevaActividad.jpg"/>
+</p>
+
+<p align="center">
+  <p>Detalle de un país</p>
+  <img src="./client/src/screens/detalleActividad.jpg"/>
 </p>
