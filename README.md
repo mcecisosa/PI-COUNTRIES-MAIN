@@ -65,12 +65,12 @@ Abre la consola de visual code:
 ## Screens
 
 <p align="center">
-  <p>Landing Page</p>
+  <p>Página de Inicio</p>
   <img src="./client/src/screens/landingPage.jpg"/>
 </p>
 
 <p align="center">
-  <p>Home Page</p>
+  <p>Página Principal</p>
   <img src="./client/src/screens/home.jpg"/>
 </p>
 
